@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Dutch - Modern Language Course</title>
+    <title>Hollanda Uyum Sınavı Kursu - 4 Haftada Hazır Ol!</title>
     
     <style>
         * {
@@ -13,11 +13,12 @@
         }
         
         :root {
-            --primary-color: #FF6B35;
-            --text-dark: #2D3436;
-            --text-light: #636E72;
-            --bg-light: #F8F9FA;
+            --primary-color: #133160;
+            --text-dark: #000000;
+            --text-gray: #666666;
+            --bg-light: #F8F8F8;
             --white: #FFFFFF;
+            --accent: #133160;
             --spacing: 2rem;
         }
         
@@ -36,7 +37,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
         nav {
@@ -48,10 +49,15 @@
             align-items: center;
         }
         
+        .logo-container {
+            background: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            height: 40px;
+            width: auto;
         }
         
         .nav-links {
@@ -63,6 +69,7 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-dark);
+            font-weight: 500;
             transition: color 0.3s;
         }
         
@@ -70,55 +77,117 @@
             color: var(--primary-color);
         }
         
+        .cta-nav {
+            background: var(--primary-color);
+            color: var(--white) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+        }
+        
+        .cta-nav:hover {
+            background: #0a1f3d;
+            color: var(--white) !important;
+        }
+        
         /* Hero Section */
         .hero {
             margin-top: 80px;
             padding: 4rem var(--spacing);
-            min-height: 70vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: var(--white);
+            background: var(--white);
         }
         
         .hero-content {
             max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
         
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+        .hero-text h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 800;
+            line-height: 1.2;
         }
         
-        .hero p {
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+        
+        .hero-text p {
             font-size: 1.25rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            color: var(--text-gray);
+        }
+        
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
         
         .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--white);
-            color: #667eea;
+            padding: 1rem 2.5rem;
+            background: var(--primary-color);
+            color: var(--white);
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 30px;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.1rem;
+            transition: all 0.3s;
         }
         
         .cta-button:hover {
+            background: #0a1f3d;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(19,49,96,0.2);
         }
         
-        /* About Section */
-        .about {
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FF3B30;
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transform: rotate(10deg);
+        }
+        
+        /* Benefits Section */
+        .benefits {
             padding: 4rem var(--spacing);
-            background: var(--white);
+            background: var(--bg-light);
         }
         
         .container {
@@ -130,121 +199,194 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: var(--text-dark);
+            font-weight: 800;
         }
         
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .feature {
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: var(--white);
-        }
-        
-        .feature h3 {
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-        
-        .feature p {
-            color: var(--text-light);
-        }
-        
-        /* Course Info Section */
-        .course-info {
-            padding: 4rem var(--spacing);
-            background: var(--bg-light);
-        }
-        
-        .info-grid {
+        .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
         }
         
-        .info-card {
+        .benefit-card {
             background: var(--white);
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .benefit-card p {
+            color: var(--text-gray);
+        }
+        
+        /* Packages Section */
+        .packages {
+            padding: 4rem var(--spacing);
+            background: var(--white);
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .package-card {
+            background: var(--white);
+            border: 2px solid #E0E0E0;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .package-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .package-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .package-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .package-guarantee {
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .package-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: left;
+        }
+        
+        .package-features .check {
+            color: #4CAF50;
+            flex-shrink: 0;
+        }
+        
+        .package-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .package-button:hover {
+            background: #0a1f3d;
+        }
+        
+        /* Guarantee Section */
+        .guarantee {
+            padding: 4rem var(--spacing);
+            background: var(--primary-color);
+            color: var(--white);
             text-align: center;
         }
         
-        .info-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        .guarantee h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .guarantee p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
         
         /* Contact Section */
         .contact {
             padding: 4rem var(--spacing);
-            background: var(--white);
+            background: var(--bg-light);
+        }
+        
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
         
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .submit-button {
-            background: var(--primary-color);
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: #25D366;
             color: var(--white);
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            margin-top: 1rem;
         }
         
-        .submit-button:hover {
-            background: #E55A2B;
+        .whatsapp-button:hover {
+            background: #1DA851;
+            transform: translateY(-2px);
         }
         
         /* Footer */
@@ -255,18 +397,32 @@
             padding: 2rem var(--spacing);
         }
         
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
             
-            .hero {
-                padding: 2rem var(--spacing);
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
             
-            .features {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .packages-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .package-card.featured {
+                transform: scale(1);
             }
         }
     </style>
@@ -275,11 +431,13 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">DutchPro</div>
+            <div class="logo-container">
+                <img src="logo.png" alt="Hollanda Uyum Sınavı Kursu" class="logo">
+            </div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#course">Course</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#benefits">Avantajlar</a></li>
+                <li><a href="#packages">Paketler</a></li>
+                <li><a href="#contact" class="cta-nav">Hemen Başla</a></li>
             </ul>
         </nav>
     </header>
@@ -287,98 +445,158 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Master Dutch with Confidence</h1>
-            <p>Join our comprehensive online course and speak Dutch fluently in just 12 weeks</p>
-            <a href="#contact" class="cta-button">Start Learning Today</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">Why Learn Dutch with Us?</h2>
+            <div class="hero-text">
+                <h1>Hollanda Uyum Sınavını <span>4 Haftada</span> Geçin!</h1>
+                <p>Ailenizle bir araya gelmek için beklemeyin. %100 başarı garantili kursumuzla hedefinize ulaşın.</p>
+                
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <div class="checkmark">✓</div>
+                        <span><strong>%100 Para İade Garantisi</strong> - Geçemezseniz paranız iade!</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="checkmark">✓</div>
+                        <span><strong>24/7 WhatsApp Destek</strong> - Her zaman yanınızdayız</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="checkmark">✓</div>
+                        <span><strong>Mobil Uygulama</strong> - Sınırsız egzersiz imkanı</span>
+                    </div>
+                </div>
+                
+                <a href="#packages" class="cta-button">Paketleri İncele</a>
+            </div>
             
-            <div class="features">
-                <div class="feature">
-                    <div class="feature-icon">📚</div>
-                    <h3>Structured Learning</h3>
-                    <p>Follow our proven curriculum designed to take you from beginner to conversational in 12 weeks</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Practical Focus</h3>
-                    <p>Learn real-world Dutch that you'll actually use in daily conversations and professional settings</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">👨‍🏫</div>
-                    <h3>Expert Instruction</h3>
-                    <p>Learn from native Dutch speakers with years of teaching experience</p>
+            <div class="hero-image">
+                <div class="hero-badge">En Uygun Fiyat!</div>
+                <!-- Placeholder for hero image -->
+                <div style="background: var(--bg-light); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: var(--text-gray);">
+                    <p>Başarı Görseliniz</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Course Info Section -->
-    <section id="course" class="course-info">
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
         <div class="container">
-            <h2 class="section-title">Course Details</h2>
+            <h2 class="section-title">Neden Bizi Seçmelisiniz?</h2>
             
-            <div class="info-grid">
-                <div class="info-card">
-                    <h4>Duration</h4>
-                    <p>12 weeks of intensive learning</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Hızlı Sonuç</h3>
+                    <p>4 hafta gibi kısa sürede sınava hazır olun. Ailenizle buluşmanız için daha fazla beklemeyin.</p>
                 </div>
                 
-                <div class="info-card">
-                    <h4>Schedule</h4>
-                    <p>3 live sessions per week + self-study</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Risk Yok</h3>
+                    <p>Sınavı geçemezseniz kurs ücretinizin tamamını iade ediyoruz. Şartsız, koşulsuz!</p>
                 </div>
                 
-                <div class="info-card">
-                    <h4>Level</h4>
-                    <p>Beginner to Intermediate (A1-B1)</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Her Yerde Öğrenin</h3>
+                    <p>Mobil uygulamamız ile istediğiniz zaman, istediğiniz yerde pratik yapın.</p>
                 </div>
                 
-                <div class="info-card">
-                    <h4>Price</h4>
-                    <p>€299 for full course access</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon">👨‍🏫</div>
+                    <h3>Uzman Eğitmenler</h3>
+                    <p>Deneyimli eğitmenlerimiz 24/7 WhatsApp hattından sorularınızı yanıtlıyor.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <h2 class="section-title">Size Uygun Paketi Seçin</h2>
+            
+            <div class="packages-grid">
+                <!-- Klasik Paket -->
+                <div class="package-card">
+                    <h3 class="package-name">Klasik Paket</h3>
+                    <p class="package-price">590 €</p>
+                    <div class="package-guarantee">%100 Başarı Garantili</div>
+                    
+                    <ul class="package-features">
+                        <li><span class="check">✓</span> Canlı kurs (20 saat)</li>
+                        <li><span class="check">✓</span> 24/7 Eğitmen Destek Hattı</li>
+                        <li><span class="check">✓</span> E-kitap</li>
+                        <li><span class="check">✓</span> Para iade garantisi</li>
+                    </ul>
+                    
+                    <button class="package-button">Hemen Başla</button>
+                </div>
+                
+                <!-- Yoğun Paket -->
+                <div class="package-card featured">
+                    <div class="package-badge">EN POPÜLER</div>
+                    <h3 class="package-name">Yoğun Paket</h3>
+                    <p class="package-price">890 €</p>
+                    <div class="package-guarantee">%100 Başarı Garantili</div>
+                    
+                    <ul class="package-features">
+                        <li><span class="check">✓</span> Canlı kurs (20 saat)</li>
+                        <li><span class="check">✓</span> 24/7 Eğitmen Destek Hattı</li>
+                        <li><span class="check">✓</span> Çevrimdışı kurs içeriği</li>
+                        <li><span class="check">✓</span> Egzersizli mobil uygulama</li>
+                        <li><span class="check">✓</span> Para iade garantisi</li>
+                    </ul>
+                    
+                    <button class="package-button">Hemen Başla</button>
+                </div>
+                
+                <!-- VIP Paket -->
+                <div class="package-card">
+                    <h3 class="package-name">VIP Paket</h3>
+                    <p class="package-price">1290 €</p>
+                    <div class="package-guarantee">%100 Başarı Garantili</div>
+                    
+                    <ul class="package-features">
+                        <li><span class="check">✓</span> Canlı kurs (20 saat)</li>
+                        <li><span class="check">✓</span> 24/7 Eğitmen Destek Hattı</li>
+                        <li><span class="check">✓</span> E-kitap</li>
+                        <li><span class="check">✓</span> Özel ders (10 saat)</li>
+                        <li><span class="check">✓</span> Para iade garantisi</li>
+                    </ul>
+                    
+                    <button class="package-button">Hemen Başla</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee">
+        <div class="container">
+            <h2>Aile Birleşimi İçin Başvuranlara %20 İndirim!</h2>
+            <p>Sevdiklerinizle bir araya gelmeniz için size özel indirim fırsatı.</p>
+            <a href="#contact" class="cta-button" style="background: white; color: var(--primary-color);">İndirimden Yararlan</a>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Ready to Start?</h2>
-            <p style="margin-bottom: 2rem;">Fill out the form below and we'll get back to you within 24 hours</p>
+        <div class="contact-content">
+            <h2 class="section-title">Hemen Başlayın!</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem;">Sorularınız mı var? WhatsApp destek hattımızdan 7/24 ulaşabilirsiniz.</p>
             
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message (Optional)</label>
-                    <textarea id="message" name="message" placeholder="Tell us about your Dutch learning goals..."></textarea>
-                </div>
-                
-                <button type="submit" class="submit-button">Get Started</button>
-            </form>
+            <a href="https://wa.me/90XXXXXXXXXX" class="whatsapp-button">
+                <span>💬</span>
+                <span>WhatsApp'tan Yazın</span>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 DutchPro. All rights reserved.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 Hollanda Uyum Sınavı Kursu. Tüm hakları saklıdır.</p>
+        </div>
     </footer>
 
     <script>
@@ -392,11 +610,13 @@
             });
         });
 
-        // Basic form handling
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your interest! We will contact you soon.');
-            this.reset();
+        // Package button click handlers
+        document.querySelectorAll('.package-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const packageName = this.closest('.package-card').querySelector('.package-name').textContent;
+                // You can redirect to WhatsApp with package info
+                window.location.href = `https://wa.me/90XXXXXXXXXX?text=Merhaba, ${packageName} hakkında bilgi almak istiyorum.`;
+            });
         });
     </script>
 </body>
